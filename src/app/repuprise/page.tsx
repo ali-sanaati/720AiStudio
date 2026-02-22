@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "RepUpRise",
     description: "RepUpRise",
     icons: {
-      icon: "/images/repuprise-logo.png",
+      icon: "/images/repuprise-icon.png",
     },
   }
 

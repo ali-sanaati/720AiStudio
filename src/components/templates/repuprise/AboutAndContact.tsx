@@ -1,4 +1,5 @@
 import React from 'react';
+import { Mail } from 'lucide-react';
 
 const AboutAndContact = () => {
   return (
@@ -53,10 +54,15 @@ const AboutAndContact = () => {
             </p>
             
             <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">
-              <div className="flex items-center gap-3">
-                <span className="text-[#5B3E7A] text-xl">📧</span>
-                <span className="text-white font-bold tracking-wider">info@repuprise.com</span>
-              </div>
+              <a
+                href="mailto:info@repuprise.com"
+                className="flex items-center gap-3 text-white font-bold tracking-wider hover:text-[#B885BE] transition-colors group"
+              >
+                <span className="w-12 h-12 rounded-xl bg-[#5B3E7A]/30 border border-[#5B3E7A]/50 flex items-center justify-center text-[#B885BE] group-hover:bg-[#5B3E7A]/50 group-hover:text-white transition-all">
+                  <Mail size={22} strokeWidth={2} />
+                </span>
+                info@repuprise.com
+              </a>
             </div>
 
             <button className="bg-[#5B3E7A] text-white px-12 py-5 rounded-full font-black uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-xl shadow-[#5B3E7A]/20">

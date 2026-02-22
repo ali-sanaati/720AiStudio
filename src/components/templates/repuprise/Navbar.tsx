@@ -117,7 +117,7 @@ export default function Navbar() {
     <nav className="fixed w-full z-50 bg-[#1E1B22]/95 backdrop-blur-md border-b border-[#3F2A54]">
       <div className="container mx-auto px-6 h-20 flex justify-between items-center">
         <Link href="/repuprise" className="flex items-center">
-          <img src="/images/repuprise-logo.png" alt="RepUpRise" className="h-12 md:h-16" />
+          <img src="/images/repuprise-icon.png" alt="RepUpRise" className="h-12 md:h-13" />
         </Link>
 
         {/* Desktop nav */}

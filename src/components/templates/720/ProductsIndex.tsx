@@ -29,24 +29,24 @@ const products: Product[] = [
   {
     id: "repuprise",
     name: "RepUpRise",
-    statement: "A comprehensive AI-driven reputation management platform designed to help organizations gain full social awareness and respond strategically to digital environments.",
-    positioning: "Narrative intelligence for the digital age.",
+    statement: "RepUpRise is a comprehensive AI-driven reputation management platform designed to help organizations gain full social awareness, monitor brand perception in real time, and respond strategically to digital environments.",
+    positioning: "AI-Powered Reputation Intelligence & Management Platform",
     problem: "Organizations lack structured visibility into online narratives, sentiment shifts, and early crisis signals.",
-    solution: "Combines advanced social listening and emotional intensity analysis with sentiment scoring (-100 to +100) to deliver a unified intelligence ecosystem.",
+    solution: "It combines advanced social listening, emotional intensity analysis, smart crisis alerts, and communication strategy support — all within a unified intelligence ecosystem.",
     capabilities: [
-      "Real-time multi-source listening engine ",
-      "Emotional sentiment & intensity analysis ",
-      "Brand crisis early-warning & spike alerts ",
-      "Strategic communication advisory layer ",
-      "Advanced boolean query system "
+      "Real-time social monitoring across platforms",
+      "Emotional sentiment & intensity analysis",
+      "Brand crisis early-warning system",
+      "Competitive and industry analysis",
+      "Strategic communication advisory layer"
     ],
     useCases: [
-      "Brand monitoring & perception tracking ",
-      "Crisis detection & early warning ",
-      "Competitive & industry intelligence",
-      "Industry trend & narrative tracking "
+      "Brand monitoring",
+      "Crisis detection",
+      "Competitive intelligence",
+      "Industry trend tracking"
     ],
-    differentiation: "Persian NLP training model with long-term structured data storage and automation integration. Built for SMEs and growing enterprises needing enterprise-level intelligence.",
+    differentiation: "Built especially for SMEs and growing enterprises that need enterprise-level reputation intelligence without enterprise-level overhead.",
     ctaLink: "/repuprise"
   },
   {

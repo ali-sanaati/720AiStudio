@@ -61,7 +61,7 @@ export default function Footer() {
               <img
                 src="/images/repuprise-logo.png"
                 alt="RepUpRise"
-                className="h-12"
+                className="h-14"
               />
             </Link>
             <p className="text-[#8F7FA8] text-sm leading-relaxed max-w-xs mb-6">
