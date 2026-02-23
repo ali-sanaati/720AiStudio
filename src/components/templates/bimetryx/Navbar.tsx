@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { handleHashLinkClick, scrollToSection } from "@/lib/scrollToHash";
 
 const navItems = [
   { label: "Product", sectionId: "product" },
@@ -17,14 +18,6 @@ const navItems = [
   { label: "Contact", sectionId: "contact" },
 ];
 
-function scrollToSection(sectionId: string, closeMobile?: () => void) {
-  const el = document.getElementById(sectionId);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth" });
-    closeMobile?.();
-  }
-}
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -38,7 +31,8 @@ export default function Navbar() {
           href={`#${sectionId}`}
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection(sectionId, () => setOpen(false));
+            scrollToSection(sectionId);
+            setOpen(false);
           }}
           className="text-sm text-body hover:text-dark transition"
         >
@@ -50,6 +44,7 @@ export default function Navbar() {
       <Link
         href={`/bimetryx#${sectionId}`}
         className="text-sm text-body hover:text-dark transition"
+        onClick={(e) => handleHashLinkClick(e, `/bimetryx#${sectionId}`, pathname)}
       >
         {label}
       </Link>
@@ -80,6 +75,7 @@ export default function Navbar() {
           <Link
             href="/bimetryx#contact"
             className="px-4 py-2 rounded-lg border border-border text-sm hover:bg-background transition"
+            onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
           >
             Download Beta
           </Link>
@@ -87,6 +83,7 @@ export default function Navbar() {
           <Link
             href="/bimetryx#contact"
             className="px-4 py-2 rounded-lg bg-primary-dark text-white text-sm hover:bg-primary transition"
+            onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
           >
             Book a Demo
           </Link>
@@ -113,7 +110,8 @@ export default function Navbar() {
                   href={`#${item.sectionId}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(item.sectionId, () => setOpen(false));
+                    scrollToSection(item.sectionId);
+                    setOpen(false);
                   }}
                   className="text-body"
                 >
@@ -123,7 +121,7 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={`/bimetryx#${item.sectionId}`}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => { handleHashLinkClick(e, `/bimetryx#${item.sectionId}`, pathname); setOpen(false); }}
                   className="text-body"
                 >
                   {item.label}
@@ -135,6 +133,7 @@ export default function Navbar() {
               <Link
                 href="/bimetryx#contact"
                 className="px-4 py-3 rounded-lg border border-border text-center"
+                onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
               >
                 Download Beta
               </Link>
@@ -142,6 +141,7 @@ export default function Navbar() {
               <Link
                 href="/bimetryx#contact"
                 className="px-4 py-3 rounded-lg bg-primary-dark text-white text-center"
+                onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
               >
                 Book a Demo
               </Link>

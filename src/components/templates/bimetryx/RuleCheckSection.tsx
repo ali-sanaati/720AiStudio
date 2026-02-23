@@ -1,8 +1,12 @@
+"use client";
 import React from 'react';
 import { Zap, CheckCircle2, FileBarChart, Milestone, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { handleHashLinkClick } from '@/lib/scrollToHash';
 
 const RuleCheckDetailed = () => {
+  const pathname = usePathname();
   const coveredRules = [
     "Minimum room dimensions by occupancy",
     "Daylight and ventilation requirements",
@@ -80,7 +84,7 @@ const RuleCheckDetailed = () => {
                   Exportable PDF & Excel formats
                 </li>
               </ul>
-              <Link href="/bimetryx#contact" className="block text-center w-full py-4 bg-primary hover:bg-primary/40 text-white font-bold rounded-xl transition-all">
+              <Link href="/bimetryx#contact" className="block text-center w-full py-4 bg-primary hover:bg-primary/40 text-white font-bold rounded-xl transition-all" onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}>
                 Download Beta
               </Link>
             </div>

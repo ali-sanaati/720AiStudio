@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { handleHashLinkClick, scrollToSection } from "@/lib/scrollToHash";
 
 const navItems = [
   { label: "Product", sectionId: "solution" },
@@ -17,11 +18,6 @@ const navItems = [
   { label: "Market", sectionId: "market" },
   { label: "Roadmap", sectionId: "roadmap" },
 ];
-
-function scrollToSection(sectionId: string) {
-  const el = document.getElementById(sectionId);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
-}
 
 const linkClass =
   "text-[#8F7FA8] hover:text-[#B885BE] text-[10px] font-bold uppercase tracking-widest transition-colors";
@@ -56,7 +52,7 @@ export default function Navbar() {
       <Link
         href={`/repuprise#${item.sectionId}`}
         className={mobileLinkClass}
-        onClick={forMobile ? closeMobile : undefined}
+        onClick={(e) => { handleHashLinkClick(e, `/repuprise#${item.sectionId}`, pathname); if (forMobile) closeMobile(); }}
       >
         {item.label}
       </Link>
@@ -82,7 +78,7 @@ export default function Navbar() {
       );
     }
     return (
-      <Link href="/repuprise#contact" className={`${baseClass} ${visibility}`} onClick={forMobile ? closeMobile : undefined}>
+      <Link href="/repuprise#contact" className={`${baseClass} ${visibility}`} onClick={(e) => { handleHashLinkClick(e, "/repuprise#contact", pathname); if (forMobile) closeMobile(); }}>
         Request Access
       </Link>
     );
@@ -107,7 +103,7 @@ export default function Navbar() {
       );
     }
     return (
-      <Link href="/repuprise#contact" className={`${baseClass} ${visibility}`} onClick={forMobile ? closeMobile : undefined}>
+      <Link href="/repuprise#contact" className={`${baseClass} ${visibility}`} onClick={(e) => { handleHashLinkClick(e, "/repuprise#contact", pathname); if (forMobile) closeMobile(); }}>
         Book a Demo
       </Link>
     );

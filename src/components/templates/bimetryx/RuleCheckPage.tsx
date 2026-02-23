@@ -1,4 +1,7 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { handleHashLinkClick } from "@/lib/scrollToHash";
 
 const checks = [
   "Minimum room dimensions by occupancy",
@@ -24,6 +27,7 @@ const roadmap = [
 ];
 
 export default function RuleCheckPage() {
+  const pathname = usePathname();
   return (
     <main className="bg-background">
       <div className="mx-auto max-w-7xl px-6 py-20 lg:py-28">
@@ -43,6 +47,7 @@ export default function RuleCheckPage() {
           <Link
             href="/bimetryx#contact"
             className="inline-block mt-8 rounded-xl bg-primary-dark px-6 py-3 text-white font-medium hover:bg-primary transition"
+            onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
           >
             Download Beta
           </Link>
@@ -122,6 +127,7 @@ export default function RuleCheckPage() {
           <Link
             href="/bimetryx#contact"
             className="inline-block mt-6 rounded-xl bg-primary-dark px-8 py-4 text-white font-medium hover:bg-primary transition"
+            onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
           >
             Download Beta
           </Link>

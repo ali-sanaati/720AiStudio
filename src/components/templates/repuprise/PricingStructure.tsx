@@ -1,7 +1,11 @@
+"use client";
 import Link from 'next/link';
 import React from 'react';
+import { usePathname } from 'next/navigation';
+import { handleHashLinkClick } from '@/lib/scrollToHash';
 
 const PricingStructure = () => {
+  const pathname = usePathname();
   const tiers = [
     {
       name: "Beta Access",
@@ -69,7 +73,7 @@ const PricingStructure = () => {
                 tier.highlight 
                 ? 'bg-[#5B3E7A] text-white hover:bg-[#5B3E7A]/80' 
                 : 'bg-[#3F2A54]/40 text-[#E6E4EA] border border-[#3F2A54] hover:bg-[#3F2A54]'
-              }`}>
+              }`} onClick={(e) => handleHashLinkClick(e, "/repuprise#contact", pathname)}>
                 {tier.cta} 
               </Link>
             </div>

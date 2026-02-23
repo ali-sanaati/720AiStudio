@@ -3,11 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-function scrollToSection(sectionId: string) {
-  const el = document.getElementById(sectionId);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
+import { handleHashLinkClick, scrollToSection } from '@/lib/scrollToHash';
 
 const productLinks = [
   { name: "BIMetryX", href: "/bimetryx" },
@@ -45,7 +41,7 @@ const Footer = () => {
       );
     }
     return (
-      <Link href={`/#${sectionId}`} className={linkClass}>
+      <Link href={`/#${sectionId}`} className={linkClass} onClick={(e) => handleHashLinkClick(e, `/#${sectionId}`, pathname)}>
         {label}
       </Link>
     );

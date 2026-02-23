@@ -1,8 +1,12 @@
+"use client";
 import React from 'react';
 import { Check, Info } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { handleHashLinkClick } from '@/lib/scrollToHash';
 
 const Pricing = () => {
+  const pathname = usePathname();
   const plans = [
     {
       name: "Beta",
@@ -92,7 +96,7 @@ const Pricing = () => {
                 plan.highlight 
                 ? 'bg-primary text-white hover:bg-primary-dark' 
                 : 'bg-background text-dark hover:bg-border'
-              }`}>
+              }`} onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}>
                 {plan.cta}
               </Link>
             </div>

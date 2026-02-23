@@ -1,6 +1,10 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { handleHashLinkClick } from "@/lib/scrollToHash";
 
 const HeroSection = () => {
+    const pathname = usePathname();
     return (
         <>
             <section className="relative w-full min-height-[90vh] flex flex-col items-center justify-center bg-background py-20 px-6 overflow-hidden">
@@ -25,10 +29,10 @@ const HeroSection = () => {
 
                     {/* Primary CTAs */}
                     <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-16">
-                        <Link href="/bimetryx#contact" className="px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-primary-dark transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
+                        <Link href="/bimetryx#contact" className="px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-primary-dark transition-all transform hover:scale-105 shadow-lg shadow-primary/20" onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}>
                             Download Beta
                         </Link>
-                        <Link href="/bimetryx#contact" className="px-8 py-4 bg-white text-dark font-bold rounded-lg border-2 border-border hover:border-dark transition-all">
+                        <Link href="/bimetryx#contact" className="px-8 py-4 bg-white text-dark font-bold rounded-lg border-2 border-border hover:border-dark transition-all" onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}>
                             Book a Demo
                         </Link>
                     </div>

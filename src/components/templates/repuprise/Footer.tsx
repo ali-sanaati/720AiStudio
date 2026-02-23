@@ -3,11 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-function scrollToSection(sectionId: string) {
-  const el = document.getElementById(sectionId);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
-}
+import { handleHashLinkClick, scrollToSection } from "@/lib/scrollToHash";
 
 const sectionLinks = [
   { label: "Home", sectionId: "hero" },
@@ -42,7 +38,7 @@ export default function Footer() {
       );
     }
     return (
-      <Link href={`/repuprise#${sectionId}`} className={className}>
+      <Link href={`/repuprise#${sectionId}`} className={className} onClick={(e) => handleHashLinkClick(e, `/repuprise#${sectionId}`, pathname)}>
         {label}
       </Link>
     );

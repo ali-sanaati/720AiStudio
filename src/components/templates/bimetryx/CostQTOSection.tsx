@@ -1,8 +1,12 @@
+"use client";
 import React from 'react';
 import { FileSpreadsheet, BarChart3, Database, Target, LayoutList } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { handleHashLinkClick } from '@/lib/scrollToHash';
 
 const SimpleCostQTO = () => {
+  const pathname = usePathname();
   return (
     <section id="cost" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
@@ -38,7 +42,7 @@ const SimpleCostQTO = () => {
               ))}
             </ul>
 
-            <Link href="/bimetryx#contact" className="mt-10 w-full py-4 bg-primary-dark text-white font-bold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-2">
+            <Link href="/bimetryx#contact" className="mt-10 w-full py-4 bg-primary-dark text-white font-bold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-2" onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}>
               Book a Demo
             </Link>
           </div>

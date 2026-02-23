@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { handleHashLinkClick, scrollToSection } from '@/lib/scrollToHash';
 
 const navLinks = [
   { name: 'Home', sectionId: 'hero' },
@@ -10,14 +11,6 @@ const navLinks = [
   { name: 'About', sectionId: 'about' },
   { name: 'Insights', sectionId: 'insights' },
 ];
-
-function scrollToSection(sectionId: string, closeMenu?: () => void) {
-  const el = document.getElementById(sectionId);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
-    closeMenu?.();
-  }
-}
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +25,8 @@ const Navbar = () => {
           href={`#${link.sectionId}`}
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection(link.sectionId, () => setIsOpen(false));
+            scrollToSection(link.sectionId);
+            setIsOpen(false);
           }}
           className={linkClass}
         >
@@ -41,7 +35,7 @@ const Navbar = () => {
       );
     }
     return (
-      <Link href={`/#${link.sectionId}`} className={linkClass}>
+      <Link href={`/#${link.sectionId}`} className={linkClass} onClick={(e) => handleHashLinkClick(e, `/#${link.sectionId}`, pathname)}>
         {link.name}
       </Link>
     );
@@ -54,7 +48,8 @@ const Navbar = () => {
           href="#contact"
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection('contact', () => setIsOpen(false));
+            scrollToSection('contact');
+            setIsOpen(false);
           }}
           className="ml-4 px-6 py-3 bg-[#0B1F3B] text-white text-xs font-black uppercase tracking-[0.2em] rounded hover:bg-[#E07823] transition-all shadow-md"
         >
@@ -66,6 +61,7 @@ const Navbar = () => {
       <Link
         href="/#contact"
         className="ml-4 px-6 py-3 bg-[#0B1F3B] text-white text-xs font-black uppercase tracking-[0.2em] rounded hover:bg-[#E07823] transition-all shadow-md"
+        onClick={(e) => handleHashLinkClick(e, '/#contact', pathname)}
       >
         Contact Us
       </Link>
@@ -115,10 +111,11 @@ const Navbar = () => {
                   <a
                     key={link.name}
                     href={`#${link.sectionId}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.sectionId, () => setIsOpen(false));
-                    }}
+onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(link.sectionId);
+                    setIsOpen(false);
+                  }}
                     className="text-sm font-bold text-[#0B1F3B] uppercase tracking-widest px-2"
                   >
                     {link.name}
@@ -127,7 +124,7 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     href={`/#${link.sectionId}`}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => { handleHashLinkClick(e, `/#${link.sectionId}`, pathname); setIsOpen(false); }}
                     className="text-sm font-bold text-[#0B1F3B] uppercase tracking-widest px-2"
                   >
                     {link.name}
@@ -139,7 +136,8 @@ const Navbar = () => {
                   href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection('contact', () => setIsOpen(false));
+                    scrollToSection('contact');
+                    setIsOpen(false);
                   }}
                   className="w-full text-center py-4 bg-[#E07823] text-white font-black uppercase tracking-widest rounded"
                 >
@@ -148,7 +146,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   href="/#contact"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => { handleHashLinkClick(e, '/#contact', pathname); setIsOpen(false); }}
                   className="w-full text-center py-4 bg-[#E07823] text-white font-black uppercase tracking-widest rounded"
                 >
                   Contact Us

@@ -1,7 +1,11 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { handleHashLinkClick } from '@/lib/scrollToHash';
 
 const HeroSection = () => {
+  const pathname = usePathname();
   return (
     <section id="hero" className="relative w-full bg-white py-24 md:py-32 lg:py-40 overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -29,6 +33,7 @@ const HeroSection = () => {
             <Link 
               href="/#products" 
               className="px-8 py-4 bg-[#E07823] text-white font-bold rounded-md hover:bg-[#c3671d] transition-colors text-center shadow-lg"
+              onClick={(e) => handleHashLinkClick(e, '/#products', pathname)}
             >
               Explore Products
             </Link>
@@ -36,6 +41,7 @@ const HeroSection = () => {
             <Link 
               href="/#contact" 
               className="px-8 py-4 border-2 border-[#0B1F3B] text-[#0B1F3B] font-bold rounded-md hover:bg-[#0B1F3B] hover:text-white transition-all text-center"
+              onClick={(e) => handleHashLinkClick(e, '/#contact', pathname)}
             >
               Talk to 720
             </Link>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { handleHashLinkClick, scrollToSection } from "@/lib/scrollToHash";
 
 const footerLinks = {
   product: [
@@ -17,11 +18,6 @@ const footerLinks = {
     { label: "Contact", sectionId: "contact" },
   ],
 };
-
-function scrollToSection(sectionId: string) {
-  const el = document.getElementById(sectionId);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
-}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -45,7 +41,7 @@ export default function Footer() {
       );
     }
     return (
-      <Link href={`/bimetryx#${item.sectionId}`} className={linkClass}>
+      <Link href={`/bimetryx#${item.sectionId}`} className={linkClass} onClick={(e) => handleHashLinkClick(e, `/bimetryx#${item.sectionId}`, pathname)}>
         {item.label}
       </Link>
     );
@@ -107,6 +103,7 @@ export default function Footer() {
             <Link
               href="/bimetryx#contact"
               className="inline-block px-6 py-3 rounded-xl font-bold text-sm bg-primary-dark text-white hover:bg-primary transition-all"
+              onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
             >
               Book a Demo
             </Link>
