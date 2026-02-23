@@ -25,6 +25,34 @@
   --color-charcoal: '#1E1B22',
 }
 
+/* 720 Toast (SweetAlert2) – navy, orange accent, matches site design */
+.toast-720 {
+  border-radius: 1rem;
+  border: 1px solid rgba(224, 120, 35, 0.4);
+  box-shadow: 0 25px 50px -12px rgba(11, 31, 59, 0.4);
+}
+.toast-720-title {
+  color: #fff !important;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+.toast-720-body {
+  color: rgb(226 232 240) !important;
+}
+.toast-720-icon {
+  color: #E07823 !important;
+  border-color: #E07823 !important;
+}
+.toast-720-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: #E07823 !important;
+}
+.toast-720-icon.swal2-success .swal2-success-ring {
+  border-color: rgba(224, 120, 35, 0.3) !important;
+}
+.toast-720-progress {
+  background: linear-gradient(to right, #E07823, #c3671d) !important;
+}
+
 /* Smooth scroll + offset for fixed navbar (e.g. bimetryx) */
 html {
   scroll-behavior: smooth;
