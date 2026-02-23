@@ -24,13 +24,13 @@ const HeroSection = () => {
                     </p>
 
                     {/* Primary CTAs */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-                        <button className="px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-primary-dark transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
+                    <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-16">
+                        <Link href="/bimetryx#contact" className="px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-primary-dark transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
                             Download Beta
-                        </button>
-                        <button className="px-8 py-4 bg-white text-dark font-bold rounded-lg border-2 border-border hover:border-dark transition-all">
+                        </Link>
+                        <Link href="/bimetryx#contact" className="px-8 py-4 bg-white text-dark font-bold rounded-lg border-2 border-border hover:border-dark transition-all">
                             Book a Demo
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Built For Badges */}

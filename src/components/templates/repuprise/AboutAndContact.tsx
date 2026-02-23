@@ -1,7 +1,29 @@
-import React from 'react';
-import { Mail } from 'lucide-react';
+"use client"
+import Link from "next/link";
+import { TopRightRepupriseToast } from "@/components/modules/Toast";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { ContactBimetryxSectionForm } from "@/types/form";
 
 const AboutAndContact = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit
+  } = useForm<ContactBimetryxSectionForm>();
+
+  const onSubmit = (data: ContactBimetryxSectionForm) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      TopRightRepupriseToast.fire({
+        title: 'Message sent successfully!',
+        icon: 'success',
+      })
+    }, 1000)
+  }
+
   return (
     <section id="about" className="bg-[#1E1B22] py-24 border-t border-[#3F2A54]">
       <div className="container mx-auto px-6 lg:px-12">
@@ -46,28 +68,82 @@ const AboutAndContact = () => {
           </div>
         </div>
 
-        <div id="contact" className="bg-gradient-to-br from-[#0B1F3B] to-[#1E1B22] p-12 rounded-[40px] border border-[#5B3E7A]/30 text-center relative overflow-hidden">
+        <div id="contact" className="bg-gradient-to-br from-[#0B1F3B] to-[#1E1B22] p-12 rounded-[40px] border border-[#5B3E7A]/30 text-center relative overflow-hidden max-w-4xl mx-auto">
           <div className="relative z-10">
             <h3 className="text-white text-4xl font-extrabold mb-6">Get in Touch</h3>
             <p className="text-[#8F7FA8] text-lg max-w-2xl mx-auto mb-10">
               Interested in joining the beta, enterprise deployment, or partnership?
             </p>
-            
-            <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">
-              <a
-                href="mailto:info@repuprise.com"
-                className="flex items-center gap-3 text-white font-bold tracking-wider hover:text-[#B885BE] transition-colors group"
-              >
-                <span className="w-12 h-12 rounded-xl bg-[#5B3E7A]/30 border border-[#5B3E7A]/50 flex items-center justify-center text-[#B885BE] group-hover:bg-[#5B3E7A]/50 group-hover:text-white transition-all">
-                  <Mail size={22} strokeWidth={2} />
-                </span>
-                info@repuprise.com
-              </a>
-            </div>
 
-            <button className="bg-[#5B3E7A] text-white px-12 py-5 rounded-full font-black uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-xl shadow-[#5B3E7A]/20">
-                Book a Demo
-            </button>
+            <div>
+              <form className="space-y-6 text-left" onSubmit={handleSubmit(onSubmit)}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[#E6E4EA] text-sm font-semibold mb-2">Name</label>
+                    <input
+                      type="text"
+                      className="w-full bg-[#3F2A54]/20 border border-[#3F2A54] rounded-xl p-3 text-white placeholder:text-[#8F7FA8] focus:border-[#5B3E7A] outline-none transition-colors"
+                      placeholder="John Doe"
+                      {...register("name", {
+                        required: { value: true, message: "name is required" },
+                      })}
+                    />
+                    {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
+                  </div>
+                  <div>
+                    <label className="block text-[#E6E4EA] text-sm font-semibold mb-2">Email</label>
+                    <input
+                      type="email"
+                      className="w-full bg-[#3F2A54]/20 border border-[#3F2A54] rounded-xl p-3 text-white placeholder:text-[#8F7FA8] focus:border-[#5B3E7A] outline-none transition-colors"
+                      placeholder="john@company.com"
+                      {...register("email", {
+                        required: { value: true, message: "email is required" },
+                        pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "email is invalid" },
+                      })}
+                    />
+                    {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[#E6E4EA] text-sm font-semibold mb-2">Company</label>
+                  <input
+                    type="text"
+                    className="w-full bg-[#3F2A54]/20 border border-[#3F2A54] rounded-xl p-3 text-white placeholder:text-[#8F7FA8] focus:border-[#5B3E7A] outline-none transition-colors"
+                    placeholder="Your Organization"
+                    {...register("company", {
+                      required: { value: true, message: "company is required" },
+                    })}
+                  />
+                  {errors.company && <p className="text-red-400 text-xs mt-1">{errors.company.message}</p>}
+                </div>
+
+                <div>
+                  <label className="block text-[#E6E4EA] text-sm font-semibold mb-2">Message</label>
+                  <textarea
+                    rows={4}
+                    className="w-full bg-[#3F2A54]/20 border border-[#3F2A54] rounded-xl p-3 text-white placeholder:text-[#8F7FA8] focus:border-[#5B3E7A] outline-none transition-colors resize-none"
+                    placeholder="How can we help? Share your objectives or questions."
+                    {...register("message", {
+                      required: { value: true, message: "message is required" },
+                    })}
+                  />
+                  {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className={`w-full py-4 rounded-xl font-bold text-white text-sm transition-all uppercase tracking-widest ${
+                    isLoading
+                      ? "bg-[#5B3E7A]/70 cursor-not-allowed"
+                      : "bg-[#5B3E7A] hover:bg-[#8F7FA8]"
+                  }`}
+                >
+                  {isLoading ? "Sending..." : "Send Message"}
+                </button>
+              </form>
+            </div>
           </div>
           
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#5B3E7A]/10 blur-[100px] rounded-full"></div>

@@ -1,8 +1,8 @@
 "use client"
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import type { Contact72SectionForm } from "@/types/form";
-import { TopRightToast } from '@/components/modules/Toast';
+import type { Contact720SectionForm } from "@/types/form";
+import { TopRight720Toast } from '@/components/modules/Toast';
 
 const ContactSection = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,13 +10,13 @@ const ContactSection = () => {
     register,
     formState: { errors },
     handleSubmit
-  } = useForm<Contact72SectionForm>();
+  } = useForm<Contact720SectionForm>();
 
-  const onSubmit = (data: Contact72SectionForm) => {
+  const onSubmit = (data: Contact720SectionForm) => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      TopRightToast.fire({
+      TopRight720Toast.fire({
         title: 'Message sent successfully!',
         icon: 'success',
       })
@@ -41,8 +41,8 @@ const ContactSection = () => {
             <div className="space-y-6">
               <div>
                 <h4 className="text-[#0B1F3B] text-xs font-black uppercase tracking-widest mb-1">Direct Email</h4>
-                <a href="mailto:hello@720.ai" className="text-2xl font-bold text-[#E07823] hover:underline">
-                  hello@720.ai
+                <a href="mailto:hello@720aistudio.com" className="text-2xl font-bold text-[#E07823] hover:underline">
+                  hello@720aistudio.com
                 </a>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check, Info } from 'lucide-react';
+import Link from 'next/link';
 
 const Pricing = () => {
   const plans = [
@@ -87,13 +88,13 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <button className={`w-full py-4 rounded-xl font-bold transition-all ${
+              <Link href="/bimetryx#contact" className={`block text-center w-full py-4 rounded-xl font-bold transition-all ${
                 plan.highlight 
                 ? 'bg-primary text-white hover:bg-primary-dark' 
                 : 'bg-background text-dark hover:bg-border'
               }`}>
                 {plan.cta}
-              </button>
+              </Link>
             </div>
           ))}
         </div>

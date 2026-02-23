@@ -9,7 +9,7 @@ const ExpandedPositioning = () => {
           {/* Left Side: The Philosophy */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-tight">
-              Artificial intelligence is not valuable <br />
+              Artificial Intelligence is not valuable <br />
               <span className="text-[#E07823]">until it operates at scale.</span> 
             </h2>
             <p className="text-slate-300 text-lg leading-relaxed mb-6">

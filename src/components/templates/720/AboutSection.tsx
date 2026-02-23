@@ -2,16 +2,22 @@ import React from 'react';
 
 const founders = [
   {
-    name: "Behrooz Naserolmemar",
-    role: "Strategic systems architecture"
+    name: "Behrouz Naserolmemar",
+    role: "Chairman & Co-Founder",
+    desc: "Strategic leadership and institutional direction. Overseeing long-term vision, governance, and ecosystem development.",
+    img: "/images/person-2-copy.PNG"
   },
   {
     name: "Mohsen Malek",
-    role: "Product strategy & applied AI workflows"
+    role: "Chief Executive Officer (CEO) & Co-Founder",
+    desc: "Leading product vision, AI strategy, and organizational execution. Responsible for growth, innovation, and market expansion.",
+    img: "/images/person-1-copy.PNG"
   },
   {
-    name: "Ali Sanati",
-    role: "AI engineering & infrastructure execution"
+    name: "Ali Sanaati",
+    role: "Chief Technology Officer (CTO) & Co-Founder",
+    desc: "Architecting AI systems, infrastructure, and scalable engineering frameworks. Responsible for technical execution and platform development.",
+    img: "/images/person-3-copy.PNG"
   }
 ];
 
@@ -40,11 +46,15 @@ const AboutSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {founders.map((founder, index) => (
               <div key={index} className="group">
+                <img src={founder.img} alt="" className='max-h-60' />
                 <h4 className="text-2xl font-bold text-[#0B1F3B] mb-2 group-hover:text-[#E07823] transition-colors">
                   {founder.name}
                 </h4>
-                <p className="text-slate-500 text-sm leading-relaxed">
+                <p className="text-slate-500 text-sm leading-relaxed mb-0.5 font-semibold">
                   {founder.role}
+                </p>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  {founder.desc}
                 </p>
               </div>
             ))}

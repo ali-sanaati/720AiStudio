@@ -41,7 +41,7 @@ export default function RuleCheckPage() {
           </p>
 
           <Link
-            href="/download-beta"
+            href="/bimetryx#contact"
             className="inline-block mt-8 rounded-xl bg-primary-dark px-6 py-3 text-white font-medium hover:bg-primary transition"
           >
             Download Beta
@@ -120,7 +120,7 @@ export default function RuleCheckPage() {
           </h3>
 
           <Link
-            href="/download-beta"
+            href="/bimetryx#contact"
             className="inline-block mt-6 rounded-xl bg-primary-dark px-8 py-4 text-white font-medium hover:bg-primary transition"
           >
             Download Beta

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Zap, CheckCircle2, FileBarChart, Milestone, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
 
 const RuleCheckDetailed = () => {
   const coveredRules = [
@@ -79,9 +80,9 @@ const RuleCheckDetailed = () => {
                   Exportable PDF & Excel formats
                 </li>
               </ul>
-              <button className="w-full py-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-xl transition-all">
+              <Link href="/bimetryx#contact" className="block text-center w-full py-4 bg-primary hover:bg-primary/40 text-white font-bold rounded-xl transition-all">
                 Download Beta
-              </button>
+              </Link>
             </div>
 
             <div className="p-8 border-2 border-dashed border-border rounded-4xl">

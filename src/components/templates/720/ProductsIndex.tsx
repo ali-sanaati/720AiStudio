@@ -1,4 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import type { Product } from '@/types/products';
+
+const CTA_FEEDBACK_DURATION_MS = 2500;
 
 const products: Product[] = [
   {
@@ -75,6 +80,15 @@ const products: Product[] = [
 ];
 
 const ProductsIndex = () => {
+  const [clickedProductId, setClickedProductId] = useState<string | null>(null);
+
+  const handleCtaClick = (productId: string) => {
+    setClickedProductId(productId);
+    setTimeout(() => setClickedProductId(null), CTA_FEEDBACK_DURATION_MS);
+  };
+
+  const isLinkedProduct = (id: string) => id === "bimetryx" || id === "repuprise";
+
   return (
     <section id="products" className="bg-white py-24">
       <div className="container mx-auto px-6 lg:px-12">
@@ -163,15 +177,46 @@ const ProductsIndex = () => {
               </div>
 
               {/* Action Button */}
-              <a
-                href={product.ctaLink}
-                className="flex items-center justify-center w-full py-5 px-2 bg-[#0B1F3B] text-white text-xs sm:text-sm font-bold rounded-lg uppercase tracking-widest hover:bg-[#E07823] transition-all duration-300 shadow-md group-hover:scale-[1.02] text-center"
-              >
-                Visit {product.name} Website
-                <svg className="min-w-4 h-4 sm:w-5 sm:h-5 ml-1 sm:ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
+              {isLinkedProduct(product.id) ? (
+                <a
+                  href={product.ctaLink}
+                  className="flex items-center justify-center w-full py-5 px-2 bg-[#0B1F3B] text-white text-xs sm:text-sm font-bold rounded-lg uppercase tracking-widest hover:bg-[#E07823] transition-all duration-300 shadow-md group-hover:scale-[1.02] text-center"
+                >
+                  Visit {product.name} Website
+                  <svg className="min-w-4 h-4 sm:w-5 sm:h-5 ml-1 sm:ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => handleCtaClick(product.id)}
+                  disabled={clickedProductId === product.id}
+                  className={`flex items-center justify-center w-full py-5 px-2 text-white text-xs sm:text-sm font-bold rounded-lg uppercase tracking-widest transition-all duration-300 shadow-md text-center gap-1 ${
+                    clickedProductId === product.id
+                      ? "bg-[#eaa872] cursor-not-allowed scale-[1.02]"
+                      : "bg-[#0B1F3B] hover:bg-[#E07823] group-hover:scale-[1.02]"
+                  }`}
+                >
+                  {clickedProductId === product.id ? (
+                    <>
+                      <span>{product.name} under construction</span>
+                      <span className="inline-flex gap-1 ml-1 items-center">
+                        <span className="product-cta-dot w-1.5 h-1.5 rounded-full bg-white" />
+                        <span className="product-cta-dot w-1.5 h-1.5 rounded-full bg-white" />
+                        <span className="product-cta-dot w-1.5 h-1.5 rounded-full bg-white" />
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      Visit {product.name} Website
+                      <svg className="min-w-4 h-4 sm:w-5 sm:h-5 ml-1 sm:ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              )}
             </div>
           ))}
         </div>

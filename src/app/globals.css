@@ -53,6 +53,72 @@
   background: linear-gradient(to right, #E07823, #c3671d) !important;
 }
 
+/* Bimetryx Toast – light theme, primary blue accent */
+.toast-bimetryx {
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 25px 50px -12px rgba(11, 95, 255, 0.15);
+}
+.toast-bimetryx-title {
+  color: #1c1c1e !important;
+  font-weight: 700;
+}
+.toast-bimetryx-body {
+  color: #3a3a3c !important;
+}
+.toast-bimetryx-icon {
+  color: #0b5fff !important;
+  border-color: #0b5fff !important;
+}
+.toast-bimetryx-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: #0b5fff !important;
+}
+.toast-bimetryx-icon.swal2-success .swal2-success-ring {
+  border-color: rgba(11, 95, 255, 0.3) !important;
+}
+.toast-bimetryx-progress {
+  background: linear-gradient(to right, #0b5fff, #0f1e3d) !important;
+}
+
+/* RepUpRise Toast – dark theme, plum/purple accent */
+.toast-repuprise {
+  border-radius: 1rem;
+  border: 1px solid #3F2A54;
+  box-shadow: 0 25px 50px -12px rgba(91, 62, 122, 0.25);
+}
+.toast-repuprise-title {
+  color: #E6E4EA !important;
+  font-weight: 700;
+}
+.toast-repuprise-body {
+  color: #8F7FA8 !important;
+}
+.toast-repuprise-icon {
+  color: #5B3E7A !important;
+  border-color: #5B3E7A !important;
+}
+.toast-repuprise-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: #5B3E7A !important;
+}
+.toast-repuprise-icon.swal2-success .swal2-success-ring {
+  border-color: rgba(91, 62, 122, 0.3) !important;
+}
+.toast-repuprise-progress {
+  background: linear-gradient(to right, #5B3E7A, #B885BE) !important;
+}
+
+/* Product CTA loading dots – staggered bounce */
+@keyframes product-cta-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.product-cta-dot {
+  animation: product-cta-bounce 0.6s ease-in-out infinite;
+}
+.product-cta-dot:nth-child(1) { animation-delay: 0ms; }
+.product-cta-dot:nth-child(2) { animation-delay: 150ms; }
+.product-cta-dot:nth-child(3) { animation-delay: 300ms; }
+
 /* Smooth scroll + offset for fixed navbar (e.g. bimetryx) */
 html {
   scroll-behavior: smooth;

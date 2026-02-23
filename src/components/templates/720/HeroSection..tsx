@@ -9,7 +9,7 @@ const HeroSection = () => {
           {/* Main Headline - Strong Typography */}
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-[#0B1F3B] mb-8 leading-[1.1]">
             AI products, <br />
-            <span className="text-[#E07823]">engineered to ship.</span>
+            <span className="text-[#E07823]">Engineered to ship.</span>
           </h1>
 
           {/* Subheading / Positioning */}

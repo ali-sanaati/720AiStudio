@@ -105,7 +105,7 @@ export default function Footer() {
               info@bimetryx.com
             </a>
             <Link
-              href=""
+              href="/bimetryx#contact"
               className="inline-block px-6 py-3 rounded-xl font-bold text-sm bg-primary-dark text-white hover:bg-primary transition-all"
             >
               Book a Demo

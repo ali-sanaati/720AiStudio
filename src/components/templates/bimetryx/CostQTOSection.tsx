@@ -1,5 +1,6 @@
 import React from 'react';
 import { FileSpreadsheet, BarChart3, Database, Target, LayoutList } from 'lucide-react';
+import Link from 'next/link';
 
 const SimpleCostQTO = () => {
   return (
@@ -37,9 +38,9 @@ const SimpleCostQTO = () => {
               ))}
             </ul>
 
-            <button className="mt-10 w-full py-4 bg-primary-dark text-white font-bold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-2">
+            <Link href="/bimetryx#contact" className="mt-10 w-full py-4 bg-primary-dark text-white font-bold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-2">
               Book a Demo
-            </button>
+            </Link>
           </div>
 
           {/* Future Roadmap */}

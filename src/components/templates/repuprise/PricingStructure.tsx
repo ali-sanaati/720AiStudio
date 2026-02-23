@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const PricingStructure = () => {
@@ -64,13 +65,13 @@ const PricingStructure = () => {
                 ))}
               </ul>
 
-              <button className={`w-full py-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
+              <Link href="/repuprise#contact" className={`block text-center w-full py-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
                 tier.highlight 
                 ? 'bg-[#5B3E7A] text-white hover:bg-[#5B3E7A]/80' 
                 : 'bg-[#3F2A54]/40 text-[#E6E4EA] border border-[#3F2A54] hover:bg-[#3F2A54]'
               }`}>
                 {tier.cta} 
-              </button>
+              </Link>
             </div>
           ))}
         </div>

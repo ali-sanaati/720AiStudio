@@ -67,10 +67,10 @@ const Footer = () => {
               Building production-grade software for real-world operations.
             </p>
             <a 
-              href="mailto:hello@720.ai" 
+              href="mailto:hello@720aistudio.com" 
               className="text-[#E07823] font-bold text-sm hover:underline"
             >
-              hello@720.ai
+              hello@720aistudio.com
             </a>
           </div>
 

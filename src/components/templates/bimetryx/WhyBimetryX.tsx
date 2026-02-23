@@ -127,7 +127,7 @@ export default function WhyBimetryX() {
 
         <div className="mt-10 flex justify-center">
           <Link
-            href=""
+            href="/bimetryx#contact"
             className="inline-block px-8 py-4 rounded-xl font-bold bg-primary-dark text-white hover:bg-primary transition-all"
           >
             Download Beta

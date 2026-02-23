@@ -78,14 +78,14 @@ export default function Navbar() {
         {/* DESKTOP CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <Link
-            href=""
+            href="/bimetryx#contact"
             className="px-4 py-2 rounded-lg border border-border text-sm hover:bg-background transition"
           >
             Download Beta
           </Link>
 
           <Link
-            href=""
+            href="/bimetryx#contact"
             className="px-4 py-2 rounded-lg bg-primary-dark text-white text-sm hover:bg-primary transition"
           >
             Book a Demo
@@ -133,14 +133,14 @@ export default function Navbar() {
 
             <div className="pt-4 flex flex-col gap-2">
               <Link
-                href="/download-beta"
+                href="/bimetryx#contact"
                 className="px-4 py-3 rounded-lg border border-border text-center"
               >
                 Download Beta
               </Link>
 
               <Link
-                href="/book-demo"
+                href="/bimetryx#contact"
                 className="px-4 py-3 rounded-lg bg-primary-dark text-white text-center"
               >
                 Book a Demo
