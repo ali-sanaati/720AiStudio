@@ -1,11 +1,8 @@
 "use client";
 import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { handleHashLinkClick } from '@/lib/scrollToHash';
+import { scrollToSection } from '@/lib/scrollToHash';
 
 const HeroSection = () => {
-  const pathname = usePathname();
   return (
     <section id="hero" className="relative w-full bg-white py-24 md:py-32 lg:py-40 overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -30,21 +27,20 @@ const HeroSection = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link 
-              href="/#products" 
+            <button
+              type="button"
               className="px-8 py-4 bg-[#E07823] text-white font-bold rounded-md hover:bg-[#c3671d] transition-colors text-center shadow-lg"
-              onClick={(e) => handleHashLinkClick(e, '/#products', pathname)}
+              onClick={() => scrollToSection('products')}
             >
               Explore Products
-            </Link>
-            
-            <Link 
-              href="/#contact" 
+            </button>
+            <button
+              type="button"
               className="px-8 py-4 border-2 border-[#0B1F3B] text-[#0B1F3B] font-bold rounded-md hover:bg-[#0B1F3B] hover:text-white transition-all text-center"
-              onClick={(e) => handleHashLinkClick(e, '/#contact', pathname)}
+              onClick={() => scrollToSection('contact')}
             >
               Talk to 720
-            </Link>
+            </button>
           </div>
         </div>
       </div>

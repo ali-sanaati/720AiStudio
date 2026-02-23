@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { handleHashLinkClick, scrollToSection } from "@/lib/scrollToHash";
+import { scrollToSection } from "@/lib/scrollToHash";
 
 const navItems = [
   { label: "Product", sectionId: "product" },
@@ -27,24 +27,22 @@ export default function Navbar() {
     const { label, sectionId } = item;
     if (isBimetryxPage) {
       return (
-        <a
-          href={`#${sectionId}`}
-          onClick={(e) => {
-            e.preventDefault();
+        <button
+          type="button"
+          onClick={() => {
             scrollToSection(sectionId);
             setOpen(false);
           }}
           className="text-sm text-body hover:text-dark transition"
         >
           {label}
-        </a>
+        </button>
       );
     }
     return (
       <Link
         href={`/bimetryx#${sectionId}`}
         className="text-sm text-body hover:text-dark transition"
-        onClick={(e) => handleHashLinkClick(e, `/bimetryx#${sectionId}`, pathname)}
       >
         {label}
       </Link>
@@ -72,21 +70,39 @@ export default function Navbar() {
 
         {/* DESKTOP CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="/bimetryx#contact"
-            className="px-4 py-2 rounded-lg border border-border text-sm hover:bg-background transition"
-            onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
-          >
-            Download Beta
-          </Link>
-
-          <Link
-            href="/bimetryx#contact"
-            className="px-4 py-2 rounded-lg bg-primary-dark text-white text-sm hover:bg-primary transition"
-            onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
-          >
-            Book a Demo
-          </Link>
+          {isBimetryxPage ? (
+            <>
+              <button
+                type="button"
+                className="px-4 py-2 rounded-lg border border-border text-sm hover:bg-background transition"
+                onClick={() => scrollToSection("contact")}
+              >
+                Download Beta
+              </button>
+              <button
+                type="button"
+                className="px-4 py-2 rounded-lg bg-primary-dark text-white text-sm hover:bg-primary transition"
+                onClick={() => scrollToSection("contact")}
+              >
+                Book a Demo
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/bimetryx#contact"
+                className="px-4 py-2 rounded-lg border border-border text-sm hover:bg-background transition"
+              >
+                Download Beta
+              </Link>
+              <Link
+                href="/bimetryx#contact"
+                className="px-4 py-2 rounded-lg bg-primary-dark text-white text-sm hover:bg-primary transition"
+              >
+                Book a Demo
+              </Link>
+            </>
+          )}
         </div>
 
         {/* MOBILE BUTTON */}
@@ -105,23 +121,22 @@ export default function Navbar() {
 
             {navItems.map((item) =>
               isBimetryxPage ? (
-                <a
+                <button
                   key={item.label}
-                  href={`#${item.sectionId}`}
-                  onClick={(e) => {
-                    e.preventDefault();
+                  type="button"
+                  onClick={() => {
                     scrollToSection(item.sectionId);
                     setOpen(false);
                   }}
-                  className="text-body"
+                  className="text-body text-left"
                 >
                   {item.label}
-                </a>
+                </button>
               ) : (
                 <Link
                   key={item.label}
                   href={`/bimetryx#${item.sectionId}`}
-                  onClick={(e) => { handleHashLinkClick(e, `/bimetryx#${item.sectionId}`, pathname); setOpen(false); }}
+                  onClick={() => setOpen(false)}
                   className="text-body"
                 >
                   {item.label}
@@ -130,21 +145,41 @@ export default function Navbar() {
             )}
 
             <div className="pt-4 flex flex-col gap-2">
-              <Link
-                href="/bimetryx#contact"
-                className="px-4 py-3 rounded-lg border border-border text-center"
-                onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
-              >
-                Download Beta
-              </Link>
-
-              <Link
-                href="/bimetryx#contact"
-                className="px-4 py-3 rounded-lg bg-primary-dark text-white text-center"
-                onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
-              >
-                Book a Demo
-              </Link>
+              {isBimetryxPage ? (
+                <>
+                  <button
+                    type="button"
+                    className="px-4 py-3 rounded-lg border border-border text-center"
+                    onClick={() => { scrollToSection("contact"); setOpen(false); }}
+                  >
+                    Download Beta
+                  </button>
+                  <button
+                    type="button"
+                    className="px-4 py-3 rounded-lg bg-primary-dark text-white text-center"
+                    onClick={() => { scrollToSection("contact"); setOpen(false); }}
+                  >
+                    Book a Demo
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/bimetryx#contact"
+                    className="px-4 py-3 rounded-lg border border-border text-center"
+                    onClick={() => setOpen(false)}
+                  >
+                    Download Beta
+                  </Link>
+                  <Link
+                    href="/bimetryx#contact"
+                    className="px-4 py-3 rounded-lg bg-primary-dark text-white text-center"
+                    onClick={() => setOpen(false)}
+                  >
+                    Book a Demo
+                  </Link>
+                </>
+              )}
             </div>
 
           </div>

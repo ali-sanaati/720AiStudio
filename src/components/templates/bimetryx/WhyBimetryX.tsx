@@ -1,8 +1,6 @@
 "use client";
 import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { handleHashLinkClick } from '@/lib/scrollToHash';
+import { scrollToSection } from '@/lib/scrollToHash';
 import {
   Building2,
   ShieldCheck,
@@ -52,7 +50,6 @@ const reasons = [
 ];
 
 export default function WhyBimetryX() {
-  const pathname = usePathname();
   return (
     <section id="why" className="py-24 bg-background relative overflow-hidden">
       {/* Subtle grid pattern */}
@@ -130,13 +127,13 @@ export default function WhyBimetryX() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <Link
-            href="/bimetryx#contact"
+          <button
+            type="button"
             className="inline-block px-8 py-4 rounded-xl font-bold bg-primary-dark text-white hover:bg-primary transition-all"
-            onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
+            onClick={() => scrollToSection("contact")}
           >
             Download Beta
-          </Link>
+          </button>
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { handleHashLinkClick, scrollToSection } from '@/lib/scrollToHash';
+import { scrollToSection } from '@/lib/scrollToHash';
 
 const productLinks = [
   { name: "BIMetryX", href: "/bimetryx" },
@@ -28,20 +28,17 @@ const Footer = () => {
   const sectionLink = (sectionId: string, label: string, linkClass: string) => {
     if (isHomePage) {
       return (
-        <a
-          href={`#${sectionId}`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection(sectionId);
-          }}
+        <button
+          type="button"
+          onClick={() => scrollToSection(sectionId)}
           className={linkClass}
         >
           {label}
-        </a>
+        </button>
       );
     }
     return (
-      <Link href={`/#${sectionId}`} className={linkClass} onClick={(e) => handleHashLinkClick(e, `/#${sectionId}`, pathname)}>
+      <Link href={`/#${sectionId}`} className={linkClass}>
         {label}
       </Link>
     );

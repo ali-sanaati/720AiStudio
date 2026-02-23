@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { handleHashLinkClick, scrollToSection } from "@/lib/scrollToHash";
+import { scrollToSection } from "@/lib/scrollToHash";
 
 const footerLinks = {
   product: [
@@ -28,20 +28,17 @@ export default function Footer() {
     const linkClass = "text-sm text-body hover:text-dark transition";
     if (isBimetryxPage) {
       return (
-        <a
-          href={`#${item.sectionId}`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection(item.sectionId);
-          }}
+        <button
+          type="button"
+          onClick={() => scrollToSection(item.sectionId)}
           className={linkClass}
         >
           {item.label}
-        </a>
+        </button>
       );
     }
     return (
-      <Link href={`/bimetryx#${item.sectionId}`} className={linkClass} onClick={(e) => handleHashLinkClick(e, `/bimetryx#${item.sectionId}`, pathname)}>
+      <Link href={`/bimetryx#${item.sectionId}`} className={linkClass}>
         {item.label}
       </Link>
     );
@@ -100,13 +97,22 @@ export default function Footer() {
             >
               info@bimetryx.com
             </a>
+            {isBimetryxPage ? (
+            <button
+              type="button"
+              className="inline-block px-6 py-3 rounded-xl font-bold text-sm bg-primary-dark text-white hover:bg-primary transition-all"
+              onClick={() => scrollToSection("contact")}
+            >
+              Book a Demo
+            </button>
+          ) : (
             <Link
               href="/bimetryx#contact"
               className="inline-block px-6 py-3 rounded-xl font-bold text-sm bg-primary-dark text-white hover:bg-primary transition-all"
-              onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}
             >
               Book a Demo
             </Link>
+          )}
           </div>
         </div>
 

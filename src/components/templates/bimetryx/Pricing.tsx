@@ -1,12 +1,9 @@
 "use client";
 import React from 'react';
 import { Check, Info } from 'lucide-react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { handleHashLinkClick } from '@/lib/scrollToHash';
+import { scrollToSection } from '@/lib/scrollToHash';
 
 const Pricing = () => {
-  const pathname = usePathname();
   const plans = [
     {
       name: "Beta",
@@ -92,13 +89,17 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <Link href="/bimetryx#contact" className={`block text-center w-full py-4 rounded-xl font-bold transition-all ${
+              <button
+                type="button"
+                className={`block text-center w-full py-4 rounded-xl font-bold transition-all ${
                 plan.highlight 
                 ? 'bg-primary text-white hover:bg-primary-dark' 
                 : 'bg-background text-dark hover:bg-border'
-              }`} onClick={(e) => handleHashLinkClick(e, "/bimetryx#contact", pathname)}>
+              }`}
+                onClick={() => scrollToSection("contact")}
+              >
                 {plan.cta}
-              </Link>
+              </button>
             </div>
           ))}
         </div>

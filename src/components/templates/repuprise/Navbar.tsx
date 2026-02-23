@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { handleHashLinkClick, scrollToSection } from "@/lib/scrollToHash";
+import { scrollToSection } from "@/lib/scrollToHash";
 
 const navItems = [
   { label: "Product", sectionId: "solution" },
@@ -35,24 +35,23 @@ export default function Navbar() {
       : linkClass;
     if (isRepuprisePage) {
       return (
-        <a
-          href={`#${item.sectionId}`}
-          onClick={(e) => {
-            e.preventDefault();
+        <button
+          type="button"
+          onClick={() => {
             scrollToSection(item.sectionId);
             if (forMobile) closeMobile();
           }}
           className={mobileLinkClass}
         >
           {item.label}
-        </a>
+        </button>
       );
     }
     return (
       <Link
         href={`/repuprise#${item.sectionId}`}
         className={mobileLinkClass}
-        onClick={(e) => { handleHashLinkClick(e, `/repuprise#${item.sectionId}`, pathname); if (forMobile) closeMobile(); }}
+        onClick={forMobile ? closeMobile : undefined}
       >
         {item.label}
       </Link>
@@ -64,21 +63,20 @@ export default function Navbar() {
     const visibility = forMobile ? "" : "hidden lg:flex";
     if (isRepuprisePage) {
       return (
-        <a
-          href="#contact"
-          onClick={(e) => {
-            e.preventDefault();
+        <button
+          type="button"
+          onClick={() => {
             scrollToSection("contact");
             if (forMobile) closeMobile();
           }}
           className={`${baseClass} ${visibility}`}
         >
           Request Access
-        </a>
+        </button>
       );
     }
     return (
-      <Link href="/repuprise#contact" className={`${baseClass} ${visibility}`} onClick={(e) => { handleHashLinkClick(e, "/repuprise#contact", pathname); if (forMobile) closeMobile(); }}>
+      <Link href="/repuprise#contact" className={`${baseClass} ${visibility}`} onClick={forMobile ? closeMobile : undefined}>
         Request Access
       </Link>
     );
@@ -89,21 +87,20 @@ export default function Navbar() {
     const visibility = forMobile ? "w-full text-center py-4" : "hidden lg:block";
     if (isRepuprisePage) {
       return (
-        <a
-          href="#contact"
-          onClick={(e) => {
-            e.preventDefault();
+        <button
+          type="button"
+          onClick={() => {
             scrollToSection("contact");
             if (forMobile) closeMobile();
           }}
           className={`${baseClass} ${visibility}`}
         >
           Book a Demo
-        </a>
+        </button>
       );
     }
     return (
-      <Link href="/repuprise#contact" className={`${baseClass} ${visibility}`} onClick={(e) => { handleHashLinkClick(e, "/repuprise#contact", pathname); if (forMobile) closeMobile(); }}>
+      <Link href="/repuprise#contact" className={`${baseClass} ${visibility}`} onClick={forMobile ? closeMobile : undefined}>
         Book a Demo
       </Link>
     );

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { handleHashLinkClick, scrollToSection } from "@/lib/scrollToHash";
+import { scrollToSection } from "@/lib/scrollToHash";
 
 const sectionLinks = [
   { label: "Home", sectionId: "hero" },
@@ -25,20 +25,17 @@ export default function Footer() {
   const sectionLink = (sectionId: string, label: string, className: string) => {
     if (isRepuprisePage) {
       return (
-        <a
-          href={`#${sectionId}`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection(sectionId);
-          }}
+        <button
+          type="button"
+          onClick={() => scrollToSection(sectionId)}
           className={className}
         >
           {label}
-        </a>
+        </button>
       );
     }
     return (
-      <Link href={`/repuprise#${sectionId}`} className={className} onClick={(e) => handleHashLinkClick(e, `/repuprise#${sectionId}`, pathname)}>
+      <Link href={`/repuprise#${sectionId}`} className={className}>
         {label}
       </Link>
     );

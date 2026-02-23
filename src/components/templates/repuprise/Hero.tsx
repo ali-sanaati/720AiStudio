@@ -1,10 +1,7 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { handleHashLinkClick } from "@/lib/scrollToHash";
+import { scrollToSection } from "@/lib/scrollToHash";
 
 export default function Hero () {
-  const pathname = usePathname();
   return (
     <section id="hero" className="bg-[#1E1B22] pt-40 pb-24 relative overflow-hidden">
       <div className="container mx-auto px-6 text-center">
@@ -22,12 +19,20 @@ export default function Hero () {
         </p>
 
         <div className="flex flex-col sm:flex-row  justify-center gap-4 sm:gap-6">
-          <Link href="/repuprise#contact" className="bg-[#5B3E7A] text-white px-8 py-4 rounded font-black uppercase tracking-widest hover:bg-[#3F2A54] transition-all" onClick={(e) => handleHashLinkClick(e, "/repuprise#contact", pathname)}>
+          <button
+            type="button"
+            className="bg-[#5B3E7A] text-white px-8 py-4 rounded font-black uppercase tracking-widest hover:bg-[#3F2A54] transition-all"
+            onClick={() => scrollToSection("contact")}
+          >
             Request Access
-          </Link>
-          <Link href="/repuprise#contact" className="border border-[#3F2A54] text-[#E6E4EA] px-8 py-4 rounded font-black uppercase tracking-widest hover:bg-[#3F2A54] transition-all" onClick={(e) => handleHashLinkClick(e, "/repuprise#contact", pathname)}>
+          </button>
+          <button
+            type="button"
+            className="border border-[#3F2A54] text-[#E6E4EA] px-8 py-4 rounded font-black uppercase tracking-widest hover:bg-[#3F2A54] transition-all"
+            onClick={() => scrollToSection("contact")}
+          >
             Book a Demo
-          </Link>
+          </button>
         </div>
       </div>
     </section>
