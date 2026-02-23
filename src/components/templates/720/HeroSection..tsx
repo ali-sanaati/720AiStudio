@@ -27,14 +27,14 @@ const HeroSection = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
-              href="/products" 
+              href="/#products" 
               className="px-8 py-4 bg-[#E07823] text-white font-bold rounded-md hover:bg-[#c3671d] transition-colors text-center shadow-lg"
             >
               Explore Products
             </Link>
             
             <Link 
-              href="/contact" 
+              href="/#contact" 
               className="px-8 py-4 border-2 border-[#0B1F3B] text-[#0B1F3B] font-bold rounded-md hover:bg-[#0B1F3B] hover:text-white transition-all text-center"
             >
               Talk to 720
