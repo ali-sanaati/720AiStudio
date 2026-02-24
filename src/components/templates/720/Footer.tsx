@@ -49,7 +49,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#0B1F3B] text-white pt-20 pb-10">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           
           <div className="col-span-1 lg:col-span-1">
             <Link href="/">
@@ -99,6 +99,26 @@ const Footer = () => {
               <li><Link href="" className={linkClass}>Privacy Policy</Link></li>
               <li><Link href="" className={linkClass}>Terms of Service</Link></li>
             </ul>
+          </div>
+
+          <div className="md:col-span-2 lg:col-span-1">
+            <h4 className="text-xs font-black uppercase tracking-[0.2em] mb-6 text-slate-500">Offices</h4>
+            <div className="space-y-6">
+              <address className="text-sm text-slate-300 not-italic leading-relaxed">
+                <span className="text-slate-400 font-semibold block mb-1">720 — Tehran Office (West)</span>
+                Unit 59, 5F, Galleria Building<br />
+                Rajab Salahi St.<br />
+                Niayesh – Jannat Abad<br />
+                Tehran, Iran
+              </address>
+              <address className="text-sm text-slate-300 not-italic leading-relaxed">
+                <span className="text-slate-400 font-semibold block mb-1">720 — Tehran Office (Central)</span>
+                Unit 7<br />
+                No. 7, 8th Alley<br />
+                Eshghiar St., Khorramshahr St.<br />
+                Tehran, Iran
+              </address>
+            </div>
           </div>
 
         </div>
